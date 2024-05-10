@@ -5,6 +5,8 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.util.Random;
 
+// 0 based indexing
+
 class HomeWindow implements WindowListener, ActionListener {
     Frame fr;
     Label l1, l2;
@@ -91,6 +93,7 @@ class MainWindow implements WindowListener, ActionListener{
 
     MainWindow(){
         correctDoor = rand.nextInt(3);
+        System.out.println(correctDoor);
         lives = 3;
 
         fr = new Frame("Lucky Door Game");
@@ -161,6 +164,8 @@ class MainWindow implements WindowListener, ActionListener{
             else{
                 lives--;
                 l.setText("Remaining Lives : " + lives);
+                correctDoor = rand.nextInt(3);
+                System.out.println(correctDoor);
             }
         }
         else if(e.getSource().equals(d2)){
@@ -172,9 +177,11 @@ class MainWindow implements WindowListener, ActionListener{
                 d1.setVisible(false);
                 d3.setVisible(false);
             }
-            else{
+            else {
                 lives--;
                 l.setText("Remaining Lives : " + lives);
+                correctDoor = rand.nextInt(3);
+                System.out.println(correctDoor);
             }
         }
         else if(e.getSource().equals(d3)){
@@ -189,14 +196,21 @@ class MainWindow implements WindowListener, ActionListener{
             else{
                 lives--;
                 l.setText("Remaining Lives : " + lives);
+                correctDoor = rand.nextInt(3);
+                System.out.println(correctDoor);
             }
+
         }
         else if(e.getSource().equals(b)){
             lives = 3;
             l.setText("Remaining Lives : " + lives);
             tf.setText(" ");
+            correctDoor = rand.nextInt(3);
+            System.out.println(correctDoor);
         }
         else if(e.getSource().equals(playAgain)){
+            correctDoor = rand.nextInt(3);
+            System.out.println(correctDoor);
             lives = 3;
             l.setText("Remaining Lives : " + lives);
             d1.setVisible(true);
@@ -206,7 +220,6 @@ class MainWindow implements WindowListener, ActionListener{
             d2.setBackground(Color.RED);
             d3.setBackground(Color.RED);
             tf.setText(" ");
-            correctDoor = rand.nextInt(3);
             b.setVisible(true);
         }
         if(lives == 0){
@@ -219,7 +232,6 @@ class MainWindow implements WindowListener, ActionListener{
             d3.setVisible(false);
             tf.setText("Game over! Play Again.");
         }
-        correctDoor = rand.nextInt(3);
     }
 
     @Override
